@@ -1,0 +1,10 @@
+## Xcode build files
+build/
+
+## Xcode private settings
+/xcuserdata
+*/xcuserdata/
+*/*.xcodeproj/xcuserdata/
+
+## Other
+*.xcuserstate
