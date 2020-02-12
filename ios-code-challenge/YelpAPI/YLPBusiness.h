@@ -8,6 +8,7 @@
 
 @import Foundation;
 @import UIKit;
+@class YLPBusinessCategory;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -28,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
 * List of category title and alias pairs associated with this business.
 */
-@property (nonatomic, readonly, copy) NSArray<NSDictionary<NSString*, NSString*>*> *categories;
+@property (nonatomic, readonly, copy) NSArray<YLPBusinessCategory*> *categories;
 
 /**
 *  Rating for this business.
@@ -49,6 +50,11 @@ NS_ASSUME_NONNULL_BEGIN
 *  Photo for this business.
 */
 @property (nonatomic, readonly) UIImage *image;
+
+/**
+ *  Price level of the business.
+ */
+@property (nonatomic, readonly, copy) NSString *priceLevel;
 
 @end
 

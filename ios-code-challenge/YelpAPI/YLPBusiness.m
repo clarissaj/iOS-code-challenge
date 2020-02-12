@@ -7,6 +7,7 @@
 //
 
 #import "YLPBusiness.h"
+#import "ios_code_challenge-Swift.h"
 
 @implementation YLPBusiness
 
@@ -15,9 +16,10 @@
     if(self = [super init]) {
         _identifier = attributes[@"id"];
         _name = attributes[@"name"];
-        _categories = attributes[@"categories"];
+        _categories = [self mapCategoriesWithCategories:attributes[@"categories"]];
         _rating = [NSString stringWithFormat:@"%@", attributes[@"rating"]];
         _reviewCount = [NSString stringWithFormat:@"%@", attributes[@"review_count"]];
+        _priceLevel = attributes[@"price"];
         
         double distance = ((NSString*)attributes[@"distance"]).doubleValue;
         _distance = [NSString stringWithFormat:@"%.0f", distance];

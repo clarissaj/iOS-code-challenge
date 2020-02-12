@@ -9,11 +9,18 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
+    
+    @IBOutlet var containerView: UIView!
+    @IBOutlet var detailPhotoImageView: UIImageView!
+    @IBOutlet var detailPriceLevelLabel: UILabel!
+    @IBOutlet var detailCategoriesLabel: UILabel!
+    @IBOutlet var detailReviewCountLabel: UILabel!
+    @IBOutlet var detailRatingLabel: UILabel!
+    @IBOutlet var defaultLabel: UILabel!
+    
     lazy private var favoriteBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Star-Outline"), style: .plain, target: self, action: #selector(onFavoriteBarButtonSelected(_:)))
 
-    @objc var detailItem: NSDate?
+    @objc var detailItem: YLPBusiness?
     
     private var _favorite: Bool = false
     private var isFavorite: Bool {
@@ -31,11 +38,18 @@ class DetailViewController: UIViewController {
     
     private func configureView() {
         guard let detailItem = detailItem else { return }
-        detailDescriptionLabel.text = detailItem.description
+        loadViewIfNeeded()
+        showDetailViews()
+        navigationItem.title = detailItem.name
+        detailPhotoImageView.image = detailItem.image
+        detailPriceLevelLabel.text = "Price: " + detailItem.priceLevel
+        detailCategoriesLabel.text = "Categories: " + detailItem.getCategoriesAsString()
+        detailReviewCountLabel.text = "Reviews: " + detailItem.reviewCount
+        detailRatingLabel.text = "Rating: " + detailItem.rating
     }
     
-    func setDetailItem(newDetailItem: NSDate) {
-        guard detailItem != newDetailItem else { return }
+    func setDetailItem(newDetailItem: YLPBusiness?) {
+        guard detailItem != newDetailItem, let newDetailItem = newDetailItem else { return }
         detailItem = newDetailItem
         configureView()
     }
@@ -47,5 +61,14 @@ class DetailViewController: UIViewController {
     @objc private func onFavoriteBarButtonSelected(_ sender: Any) {
         _favorite.toggle()
         updateFavoriteBarButtonState()
+    }
+    
+    func showDetailViews() {
+        detailPhotoImageView.isHidden = false
+        detailPriceLevelLabel.isHidden = false
+        detailCategoriesLabel.isHidden = false
+        detailRatingLabel.isHidden = false
+        detailReviewCountLabel.isHidden = false
+        defaultLabel.isHidden = true
     }
 }

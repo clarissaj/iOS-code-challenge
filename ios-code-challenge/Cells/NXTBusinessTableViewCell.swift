@@ -18,20 +18,11 @@ class NXTBusinessTableViewCell: UITableViewCell {
     
     func configureCell(business: YLPBusiness) {
         nameLabel.text = business.name
-        categoriesLabel.text = getCategoriesAsString(business.categories)
+        categoriesLabel.text = business.getCategoriesAsString()
         ratingLabel.text = "Rating: " + business.rating
         reviewCountLabel.text = "Reviews: " + business.reviewCount
         distanceLabel.text = "Distance: \(business.distance) m"
         thumbnailImageView.image = business.image
-    }
-    
-    func getCategoriesAsString(_ categories: [[String : String]]) -> String {
-        var result = ""
-        categories.compactMap({$0["title"]}).forEach({ result += "\($0), " })
-        if result != "" {
-            result = String(result.dropLast(2))
-        }
-        return result
     }
 }
 

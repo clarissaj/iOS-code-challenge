@@ -35,6 +35,9 @@ class MasterViewController: UITableViewController {
                     return
             }
             dataSource.setObjects(businesses)
+            dataSource.tableViewDidSelectCell = { object in
+                strongSelf.performSegue(withIdentifier: "showDetail", sender: object)
+            }
             strongSelf.tableView.reloadData()
         })
     }
@@ -47,15 +50,14 @@ class MasterViewController: UITableViewController {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
-//            guard let indexPath = tableView.indexPathForSelectedRow,
-//                let controller = segue.destination as? DetailViewController else {
-//                return
-//            }
-//            let object = objects[indexPath.row]
-//            controller.setDetailItem(newDetailItem: object)
-//            controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
-//            controller.navigationItem.leftItemsSupplementBackButton = true
+            guard let indexPath = tableView.indexPathForSelectedRow,
+                let navController = segue.destination as? UINavigationController, let controller = navController.topViewController as? DetailViewController else {
+                return
+            }
+            let business = dataSource?.objects[indexPath.row] as? YLPBusiness
+            controller.setDetailItem(newDetailItem: business)
+            controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
+            controller.navigationItem.leftItemsSupplementBackButton = true
         }
     }
-
 }
