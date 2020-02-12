@@ -7,7 +7,7 @@
 //
 
 #import "YLPBusiness+CellForObject.h"
-#import "NXTBusinessTableViewCell.h"
+#import "ios_code_challenge-Swift.h"
 
 NSString *const kNXTBusinessTableViewCellIdentifier = @"NXTBusinessTableViewCellIdentifier";
 
@@ -29,7 +29,7 @@ NSString *const kNXTBusinessTableViewCellIdentifier = @"NXTBusinessTableViewCell
 
 - (CGFloat)estimatedCellHeightForObjectForTableView:(UITableView *)tableView
 {
-    return 55.0f;
+    return 100.0f;
 }
 
 @end

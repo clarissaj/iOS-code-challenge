@@ -7,6 +7,7 @@
 //
 
 @import Foundation;
+@import UIKit;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,6 +24,31 @@ NS_ASSUME_NONNULL_BEGIN
  *  Name of this business.
  */
 @property (nonatomic, readonly, copy) NSString *name;
+
+/**
+* List of category title and alias pairs associated with this business.
+*/
+@property (nonatomic, readonly, copy) NSArray<NSDictionary<NSString*, NSString*>*> *categories;
+
+/**
+*  Rating for this business.
+*/
+@property (nonatomic, readonly, copy) NSString *rating;
+
+/**
+*  Number of reviews for this business.
+*/
+@property (nonatomic, readonly, copy) NSString *reviewCount;
+
+/**
+*  Distance in meters from the search location.
+*/
+@property (nonatomic, readonly, copy) NSString *distance;
+
+/**
+*  Photo for this business.
+*/
+@property (nonatomic, readonly) UIImage *image;
 
 @end
 
