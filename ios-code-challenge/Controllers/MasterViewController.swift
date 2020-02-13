@@ -10,8 +10,6 @@ import UIKit
 
 class MasterViewController: UITableViewController {
     
-    var detailViewController: DetailViewController?
-    
     lazy private var dataSource: NXTDataSource? = {
         guard let dataSource = NXTDataSource(objects: nil) else { return nil }
         dataSource.tableViewDidReceiveData = { [weak self] in
@@ -42,11 +40,19 @@ class MasterViewController: UITableViewController {
             
             strongSelf.tableView.reloadData()
         }
+        
+        setupSearchBar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.clearsSelectionOnViewWillAppear = self.splitViewController?.isCollapsed ?? false
         super.viewDidAppear(animated)
+    }
+    
+    func setupSearchBar() {
+        tableView.tableHeaderView = NXTSearchController.shared.searchBar
+        NXTSearchController.shared.searchResultsUpdater = self
+        NXTSearchController.shared.searchBar.delegate = self
     }
     
     // MARK: - Navigation
@@ -60,6 +66,38 @@ class MasterViewController: UITableViewController {
             controller.setDetailItem(newDetailItem: business)
             controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
             controller.navigationItem.leftItemsSupplementBackButton = true
+        }
+    }
+}
+
+// MARK: UISearchResultsUpdating
+extension MasterViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard !NXTSearchController.shared.isSearchBarEmpty else { return }
+        
+        let filteredObjects = dataSource?.objects.filter({ object -> Bool in
+            guard let business = object as? YLPBusiness, let searchText = searchController.searchBar.text?.lowercased() else { return false }
+            
+            return business.name.lowercased().contains(searchText) || business.priceLevel.lowercased().contains(searchText) || business.rating.lowercased().contains(searchText) || business.reviewCount.lowercased().contains(searchText) ||
+                business.distance.lowercased().contains(searchText) || !business.categories.filter({ $0.title.lowercased().contains(searchText)}).isEmpty
+        })
+        dataSource?.setFilteredObjects(filteredObjects)
+
+        tableView.reloadData()
+    }
+}
+
+// MARK: UISearchBarDelegate
+extension MasterViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        NXTSearchController.shared.isActive = false
+        tableView.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            dataSource?.setFilteredObjects(dataSource?.objects)
+            tableView.reloadData()
         }
     }
 }

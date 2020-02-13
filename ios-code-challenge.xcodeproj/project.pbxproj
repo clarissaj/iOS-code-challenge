@@ -13,6 +13,7 @@
 		6B0CED7023F47130008D751A /* YLPBusinessCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0CED6F23F47130008D751A /* YLPBusinessCategory.swift */; };
 		6BCF7E2823F4BAF800F033AC /* NXTLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCF7E2723F4BAF800F033AC /* NXTLocationManager.swift */; };
 		6BCF7E2A23F4BF2900F033AC /* YLPSearchQuery+Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCF7E2923F4BF2900F033AC /* YLPSearchQuery+Coordinates.swift */; };
+		6BCF7E2E23F52F7E00F033AC /* NXTSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCF7E2D23F52F7E00F033AC /* NXTSearchController.swift */; };
 		6E2812E89D1BFA7A84C8E1EA /* libPods-ios-code-challengeUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE926015E1B4191E0337FDF0 /* libPods-ios-code-challengeUITests.a */; };
 		8A0DD630BF6711D94ACCFDB6 /* libPods-ios-code-challenge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E98E17AF5F4AF737558F432A /* libPods-ios-code-challenge.a */; };
 		8DC8B21A22A1764500CA0435 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC8B21922A1764500CA0435 /* DetailViewController.swift */; };
@@ -62,6 +63,7 @@
 		6B0CED6F23F47130008D751A /* YLPBusinessCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YLPBusinessCategory.swift; sourceTree = "<group>"; };
 		6BCF7E2723F4BAF800F033AC /* NXTLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NXTLocationManager.swift; sourceTree = "<group>"; };
 		6BCF7E2923F4BF2900F033AC /* YLPSearchQuery+Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YLPSearchQuery+Coordinates.swift"; sourceTree = "<group>"; };
+		6BCF7E2D23F52F7E00F033AC /* NXTSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NXTSearchController.swift; sourceTree = "<group>"; };
 		8DC8B21822A1764400CA0435 /* ios-code-challenge-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ios-code-challenge-Bridging-Header.h"; sourceTree = "<group>"; };
 		8DC8B21922A1764500CA0435 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		8DC8B22B22A186E000CA0435 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 			children = (
 				8DC8B22B22A186E000CA0435 /* MasterViewController.swift */,
 				8DC8B21922A1764500CA0435 /* DetailViewController.swift */,
+				6BCF7E2D23F52F7E00F033AC /* NXTSearchController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 				C5CEF1D02014E1FD009D1571 /* YLPBusiness.m in Sources */,
 				8DC8B21A22A1764500CA0435 /* DetailViewController.swift in Sources */,
 				6BCF7E2823F4BAF800F033AC /* NXTLocationManager.swift in Sources */,
+				6BCF7E2E23F52F7E00F033AC /* NXTSearchController.swift in Sources */,
 				6B0CED7023F47130008D751A /* YLPBusinessCategory.swift in Sources */,
 				C5CEF1CA2014DB71009D1571 /* YLPSearchQuery.m in Sources */,
 				C5CEF1DC20153618009D1571 /* YLPBusiness+CellForObject.m in Sources */,

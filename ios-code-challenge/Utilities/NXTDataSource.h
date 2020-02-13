@@ -18,8 +18,10 @@
 - (void)insertObject:(id)object atIndex:(NSUInteger)index;
 - (void)removeAllObjects;
 - (void)removeObject:(id)object;
+- (void)setFilteredObjects:(NSArray *)objects;
     
 @property (nonatomic, readonly) NSArray *objects;
+@property (nonatomic, readonly) NSArray *filteredObjects;
 @property (nonatomic, copy) void(^tableViewDidReceiveData)(void);
 @property (nonatomic, copy) void(^tableViewDidSelectCell)(id object);
 @property (nonatomic, copy) void(^tableViewDidSelectAccessoryView)(id object);

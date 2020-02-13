@@ -9,10 +9,12 @@
 #import "NXTDataSource.h"
 #import "NXTCellForObjectDelegate.h"
 #import "NXTBindingDataForObjectDelegate.h"
+#import "ios_code_challenge-Swift.h"
 
 @interface NXTDataSource()
 
 @property (nonatomic, strong) NSMutableArray *mutableObjects;
+@property (nonatomic, strong) NSMutableArray *mutableFilteredObjects;
     
 @end
 
@@ -30,7 +32,7 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.mutableObjects count];
+    return [[NXTSearchController shared] isActive] ? [self.mutableFilteredObjects count] : [self.mutableObjects count];
 }
     
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -47,7 +49,7 @@
     
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    id<NXTCellForObjectDelegate> object = self.mutableObjects[indexPath.row];
+    id<NXTCellForObjectDelegate> object = [[NXTSearchController shared] isActive] ? self.filteredObjects[indexPath.row] : self.mutableObjects[indexPath.row];
     id<NXTBindingDataForObjectDelegate> cell = [object cellForObjectForTableView:tableView];
     
     [cell bindingDataForObject:object];
@@ -131,6 +133,15 @@
 {
     return self.mutableObjects;
 }
+
+- (void)setFilteredObjects:(NSArray *)objects {
+    [self.mutableFilteredObjects setArray:objects];
+}
+
+- (NSArray *)filteredObjects
+{
+    return self.mutableFilteredObjects;
+}
     
 #pragma mark - Properties
 - (NSMutableArray *)mutableObjects
@@ -140,6 +151,15 @@
     }
     
     return _mutableObjects;
+}
+
+- (NSMutableArray *)mutableFilteredObjects
+{
+    if(_mutableFilteredObjects == nil) {
+        _mutableFilteredObjects = [NSMutableArray array];
+    }
+    
+    return _mutableFilteredObjects;
 }
 
 @end
