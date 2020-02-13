@@ -9,14 +9,12 @@
 #import "YLPBusiness+CellForObject.h"
 #import "ios_code_challenge-Swift.h"
 
-NSString *const kNXTBusinessTableViewCellIdentifier = @"NXTBusinessTableViewCellIdentifier";
-
 @implementation YLPBusiness (CellForObject)
 
 #pragma mark - NXTCellForObjectDelegate
 - (id<NXTBindingDataForObjectDelegate>)cellForObjectForTableView:(id)tableView
 {
-    id<NXTBindingDataForObjectDelegate> cell = [tableView dequeueReusableCellWithIdentifier:kNXTBusinessTableViewCellIdentifier];
+    id<NXTBindingDataForObjectDelegate> cell = [tableView dequeueReusableCellWithIdentifier:NXTBusinessTableViewCell.reuseIdentifier];
     
     if(!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([NXTBusinessTableViewCell class])

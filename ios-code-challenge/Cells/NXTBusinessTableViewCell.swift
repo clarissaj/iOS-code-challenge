@@ -16,6 +16,8 @@ class NXTBusinessTableViewCell: UITableViewCell {
     @IBOutlet var reviewCountLabel: UILabel!
     @IBOutlet var distanceLabel: UILabel!
     
+    @objc static let reuseIdentifier = "NXTBusinessTableViewCellIdentifier"
+    
     func configureCell(business: YLPBusiness) {
         nameLabel.text = business.name
         categoriesLabel.text = business.getCategoriesAsString()

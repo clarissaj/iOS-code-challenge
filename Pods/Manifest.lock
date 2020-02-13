@@ -16,20 +16,25 @@ PODS:
     - AFNetworking/NSURLSession
   - AFOAuth2Manager (3.0.0):
     - AFNetworking/NSURLSession (~> 3.0)
+  - SkeletonView (1.8.5)
 
 DEPENDENCIES:
   - AFNetworking
   - AFOAuth2Manager
+  - SkeletonView (~> 1.8)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - AFOAuth2Manager
+  trunk:
+    - SkeletonView
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AFOAuth2Manager: 0566da1be64883e339813d411229fdc9a84dab7c
+  SkeletonView: 3a8d8dd241eaa7e7bb3744bc000fed94fcd69823
 
-PODFILE CHECKSUM: e5d3411784465c4c469bec23c6d562ca8004a791
+PODFILE CHECKSUM: 61180f65f3ddb68f647088d53dda76b79232df56
 
 COCOAPODS: 1.8.4

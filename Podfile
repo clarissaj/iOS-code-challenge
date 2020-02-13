@@ -8,6 +8,7 @@ target 'ios-code-challenge' do
   # Pods for ios-code-challenge
   pod 'AFNetworking'
   pod 'AFOAuth2Manager'
+  pod 'SkeletonView', '~> 1.8'
 
   target 'ios-code-challengeTests' do
     inherit! :search_paths

@@ -22,6 +22,7 @@
     
 @property (nonatomic, readonly) NSArray *objects;
 @property (nonatomic, readonly) NSArray *filteredObjects;
+@property (nonatomic) BOOL shouldAnimateCells;
 @property (nonatomic, copy) void(^tableViewDidReceiveData)(void);
 @property (nonatomic, copy) void(^tableViewDidSelectCell)(id object);
 @property (nonatomic, copy) void(^tableViewDidSelectAccessoryView)(id object);

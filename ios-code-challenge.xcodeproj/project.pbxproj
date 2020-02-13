@@ -11,6 +11,7 @@
 		6B0CED6C23F3CC95008D751A /* NXTBusinessTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B0CED6B23F3CC95008D751A /* NXTBusinessTableViewCell.xib */; };
 		6B0CED6E23F46F55008D751A /* YLPBusiness+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0CED6D23F46F55008D751A /* YLPBusiness+Helpers.swift */; };
 		6B0CED7023F47130008D751A /* YLPBusinessCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0CED6F23F47130008D751A /* YLPBusinessCategory.swift */; };
+		6BA49CDA23F5484B001970DD /* NXTDataSource+SkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA49CD923F5484B001970DD /* NXTDataSource+SkeletonView.swift */; };
 		6BCF7E2823F4BAF800F033AC /* NXTLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCF7E2723F4BAF800F033AC /* NXTLocationManager.swift */; };
 		6BCF7E2A23F4BF2900F033AC /* YLPSearchQuery+Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCF7E2923F4BF2900F033AC /* YLPSearchQuery+Coordinates.swift */; };
 		6BCF7E2E23F52F7E00F033AC /* NXTSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCF7E2D23F52F7E00F033AC /* NXTSearchController.swift */; };
@@ -61,6 +62,7 @@
 		6B0CED6B23F3CC95008D751A /* NXTBusinessTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NXTBusinessTableViewCell.xib; sourceTree = "<group>"; };
 		6B0CED6D23F46F55008D751A /* YLPBusiness+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YLPBusiness+Helpers.swift"; sourceTree = "<group>"; };
 		6B0CED6F23F47130008D751A /* YLPBusinessCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YLPBusinessCategory.swift; sourceTree = "<group>"; };
+		6BA49CD923F5484B001970DD /* NXTDataSource+SkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NXTDataSource+SkeletonView.swift"; sourceTree = "<group>"; };
 		6BCF7E2723F4BAF800F033AC /* NXTLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NXTLocationManager.swift; sourceTree = "<group>"; };
 		6BCF7E2923F4BF2900F033AC /* YLPSearchQuery+Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YLPSearchQuery+Coordinates.swift"; sourceTree = "<group>"; };
 		6BCF7E2D23F52F7E00F033AC /* NXTSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NXTSearchController.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				C5CEF1B72014411C009D1571 /* NXTDataSource.h */,
 				C5CEF1B82014411C009D1571 /* NXTDataSource.m */,
 				6BCF7E2723F4BAF800F033AC /* NXTLocationManager.swift */,
+				6BA49CD923F5484B001970DD /* NXTDataSource+SkeletonView.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				8DC8B21A22A1764500CA0435 /* DetailViewController.swift in Sources */,
 				6BCF7E2823F4BAF800F033AC /* NXTLocationManager.swift in Sources */,
 				6BCF7E2E23F52F7E00F033AC /* NXTSearchController.swift in Sources */,
+				6BA49CDA23F5484B001970DD /* NXTDataSource+SkeletonView.swift in Sources */,
 				6B0CED7023F47130008D751A /* YLPBusinessCategory.swift in Sources */,
 				C5CEF1CA2014DB71009D1571 /* YLPSearchQuery.m in Sources */,
 				C5CEF1DC20153618009D1571 /* YLPBusiness+CellForObject.m in Sources */,

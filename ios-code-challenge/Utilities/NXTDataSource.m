@@ -24,6 +24,7 @@
 {
     if(self = [super init]) {
         _mutableObjects = [NSMutableArray arrayWithArray:objects];
+        _shouldAnimateCells = YES;
     }
     
     return self;
@@ -32,29 +33,52 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[NXTSearchController shared] isActive] ? [self.mutableFilteredObjects count] : [self.mutableObjects count];
+    return [[NXTSearchController shared] isActive] ? [self.mutableFilteredObjects count] : ([self.mutableObjects count] == 0 ? 10 : [self.mutableObjects count]);
 }
     
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    id<NXTCellForObjectDelegate> object = self.mutableObjects[indexPath.row];
-    return [object estimatedCellHeightForObjectForTableView:tableView];
+    if ([self.mutableObjects count] != 0) {
+        id<NXTCellForObjectDelegate> object = self.mutableObjects[indexPath.row];
+        return [object estimatedCellHeightForObjectForTableView:tableView];
+    } else {
+        return 100.0f;
+    }
 }
     
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    id<NXTCellForObjectDelegate> object = self.mutableObjects[indexPath.row];
-    return [object estimatedCellHeightForObjectForTableView:tableView];
+    if ([self.mutableObjects count] != 0) {
+        id<NXTCellForObjectDelegate> object = self.mutableObjects[indexPath.row];
+        return [object estimatedCellHeightForObjectForTableView:tableView];
+    } else {
+        return 100.0f;
+    }
 }
     
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    id<NXTCellForObjectDelegate> object = [[NXTSearchController shared] isActive] ? self.filteredObjects[indexPath.row] : self.mutableObjects[indexPath.row];
-    id<NXTBindingDataForObjectDelegate> cell = [object cellForObjectForTableView:tableView];
     
-    [cell bindingDataForObject:object];
-    
-    return (UITableViewCell *)cell;
+    if (self.shouldAnimateCells) {
+        NXTBusinessTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NXTBusinessTableViewCell.reuseIdentifier];
+        
+        if(!cell) {
+            cell = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([NXTBusinessTableViewCell class])
+                                                  owner:nil
+                                                options:nil] firstObject];
+        }
+        
+        [self showSkeletonCellWithCell:cell];
+        
+        return cell;
+    } else {
+        id<NXTCellForObjectDelegate> object = [[NXTSearchController shared] isActive] ? self.filteredObjects[indexPath.row] : self.mutableObjects[indexPath.row];
+        id<NXTBindingDataForObjectDelegate> cell = [object cellForObjectForTableView:tableView];
+        
+        [cell bindingDataForObject:object];
+        [self hideSkeletonCellWithCell:(NXTBusinessTableViewCell *)cell];
+        return (UITableViewCell *)cell;
+    }
 }
     
 #pragma mark - UITableViewDelegate

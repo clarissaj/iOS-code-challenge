@@ -38,6 +38,7 @@ class MasterViewController: UITableViewController {
                 strongSelf.performSegue(withIdentifier: "showDetail", sender: object)
             }
             
+            dataSource.shouldAnimateCells = false
             strongSelf.tableView.reloadData()
         }
         
