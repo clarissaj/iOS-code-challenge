@@ -20,8 +20,12 @@
     progress:nil
     success:^(NSURLSessionDataTask *task, id responseObject)
     {
-        YLPSearch *searchResult = [[YLPSearch alloc] initWithAttributes:responseObject];
-        completionHandler(searchResult, nil);
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            YLPSearch *searchResult = [[YLPSearch alloc] initWithAttributes:responseObject];
+            dispatch_async(dispatch_get_main_queue(), ^(void) {
+                 completionHandler(searchResult, nil);
+            });
+        });
     }
     failure:^(NSURLSessionDataTask *task, id responseObject)
     {

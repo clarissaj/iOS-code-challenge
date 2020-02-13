@@ -27,20 +27,21 @@ class MasterViewController: UITableViewController {
         tableView.dataSource = dataSource
         tableView.delegate = dataSource
         
-        let query = YLPSearchQuery(location: "5550 West Executive Dr. Tampa, FL 33609")
-        AFYelpAPIClient.shared().search(with: query, completionHandler: { [weak self] searchResult, error in
+        NXTLocationManager.shared.updateSearchResults = { [weak self] searchResult in
             guard let strongSelf = self,
                 let dataSource = strongSelf.dataSource,
                 var businesses = searchResult?.businesses else {
                     return
             }
+            
             businesses.sort { Int($0.distance) ?? .zero < Int($1.distance) ?? .zero }
             dataSource.setObjects(businesses)
             dataSource.tableViewDidSelectCell = { object in
                 strongSelf.performSegue(withIdentifier: "showDetail", sender: object)
             }
+            
             strongSelf.tableView.reloadData()
-        })
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

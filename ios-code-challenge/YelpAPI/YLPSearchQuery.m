@@ -30,6 +30,9 @@
     
     if(self.location) {
         params[@"location"] = self.location;
+    } else if(self.coordinates) {
+        params[@"latitude"] = [NSString stringWithFormat:@"%f", self.coordinates.coordinate.latitude];
+        params[@"longitude"] = [NSString stringWithFormat:@"%f", self.coordinates.coordinate.longitude];
     }
     
     if(self.term) {

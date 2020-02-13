@@ -7,6 +7,7 @@
 //
 
 @import Foundation;
+@import CoreLocation;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -34,6 +35,11 @@ NS_ASSUME_NONNULL_BEGIN
  *  error may be returned. The max value is 40000 meters (25 miles).
  */
 @property (nonatomic, assign) double radiusFilter;
+
+/*
+ * Latitude & Longitude of the location you want to search nearby.
+ */
+@property (nonatomic, copy) CLLocation *coordinates;
 
 @end
 
